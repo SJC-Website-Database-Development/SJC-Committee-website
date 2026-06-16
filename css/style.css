@@ -802,3 +802,25 @@ footer {
     color: var(--text-dark);
     font-size: 1.2rem;
 }
+
+/* =====================
+   PAGE HEADER
+===================== */
+.page-header {
+    background-color: var(--burgundy);
+    color: var(--warm-white);
+    text-align: center;
+    padding: 8rem 1.25rem 3rem;
+    margin-top: 0;
+}
+
+.page-header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: var(--cream);
+}
