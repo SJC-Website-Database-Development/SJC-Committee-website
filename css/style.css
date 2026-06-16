@@ -884,3 +884,78 @@ footer {
     width: 100%;
     border: 3px solid var(--gold);
 }
+
+/* =====================
+   GIVING PAGE
+===================== */
+.giving-intro {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+}
+
+.giving-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.giving-card {
+    background-color: var(--white);
+    border-top: 4px solid var(--gold);
+    padding: 2rem;
+    text-align: center;
+}
+
+.giving-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.giving-card h3 {
+    color: var(--burgundy);
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+
+.giving-card p {
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.giving-detail {
+    font-weight: bold;
+    color: var(--burgundy);
+}
+
+.giving-detail a {
+    color: var(--burgundy);
+}
+
+.giving-detail a:hover {
+    color: var(--gold);
+}
+
+.giving-note {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem;
+    border: 2px solid var(--gold);
+    background-color: var(--warm-white);
+}
+
+.giving-note p {
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+    .giving-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
