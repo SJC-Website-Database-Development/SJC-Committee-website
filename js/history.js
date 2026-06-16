@@ -3,7 +3,6 @@
 // =============================================
 const IMAGES = {
     oldChurch:   'images/old-church.png',
-    oldInterior: 'images/old-interior.png',
 };
 
 // =============================================
