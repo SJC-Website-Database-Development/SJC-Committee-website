@@ -16,79 +16,100 @@
                 <span class="nav-title">ST. JOSEPH PARISH</span>
                 <span class="nav-subtitle">Port Hawkesbury</span>
             </div>
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">About ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="about.html">Our Parish</a></li>
-                        <li><a href="history.html">Parish History</a></li>
-                        <li><a href="pastoral-council.html">Pastoral Council</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Media & Events ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="media.html#bulletins">Bulletins</a></li>
-                        <li><a href="media.html#calendar">Calendar</a></li>
-                        <li><a href="media.html#livestream">Live Stream</a></li>
-                    </ul>
-                </li>
-                <li><a href="faith-formation.html" class="nav-link">Faith Formation</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Ministries ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="ministries.html#lectors">Lectors</a></li>
-                        <li><a href="ministries.html#eucharist">Eucharist Ministers</a></li>
-                        <li><a href="ministries.html#altar-servers">Altar Servers</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Committees ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="committees.html#finance">Finance</a></li>
-                        <li><a href="committees.html#fundraising">Fundraising</a></li>
-                        <li><a href="committees.html#liturgy">Liturgy</a></li>
-                        <li><a href="committees.html#property">Property</a></li>
-                        <li><a href="committees.html#cemetery">Cemetery</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Sacraments ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="sacraments.html#baptism">Baptism</a></li>
-                        <li><a href="sacraments.html#communion">First Communion</a></li>
-                        <li><a href="sacraments.html#confirmation">Confirmation</a></li>
-                        <li><a href="sacraments.html#marriage">Marriage</a></li>
-                        <li><a href="sacraments.html#anointing">Anointing of the Sick</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Organizations ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="organizations.html#cwl">Catholic Women's League</a></li>
-                        <li><a href="organizations.html#koc">Knights of Columbus</a></li>
-                        <li><a href="organizations.html#dnp">Development & Peace</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Cemeteries ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="cemeteries.html#stjoseph">St. Joseph's Cemetery</a></li>
-                        <li><a href="cemeteries.html#chapelhill">Chapel Hill Cemetery</a></li>
-                        <li><a href="cemeteries.html#guidelines">Guidelines</a></li>
-                    </ul>
-                </li>
-                <li><a href="giving.html" class="nav-link">Giving</a></li>
-                <li><a href="closet.html" class="nav-link">The Closet</a></li>
-            </ul>
+            <div class="nav-right">
+                <a href="#mass" class="nav-quick-link">Mass Times</a>
+                <a href="#contact" class="nav-quick-link">Contact</a>
+                <button class="hamburger" id="hamburger" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
+
+    <!-- SIDEBAR OVERLAY -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-close" id="sidebar-close">✕</button>
+        <ul class="sidebar-nav">
+            <li><a href="index.html">Home</a></li>
+
+            <li class="sidebar-dropdown">
+                <button class="sidebar-dropdown-toggle">About <span>▾</span></button>
+                <ul class="sidebar-dropdown-menu">
+                    <li><a href="about.html">Our Parish</a></li>
+                    <li><a href="history.html">Parish History</a></li>
+                    <li><a href="pastoral-council.html">Pastoral Council</a></li>
+                </ul>
+            </li>
+
+            <li class="sidebar-dropdown">
+                <button class="sidebar-dropdown-toggle">Media & Events <span>▾</span></button>
+                <ul class="sidebar-dropdown-menu">
+                    <li><a href="media.html#bulletins">Bulletins</a></li>
+                    <li><a href="media.html#calendar">Calendar</a></li>
+                    <li><a href="media.html#livestream">Live Stream</a></li>
+                </ul>
+            </li>
+
+            <li><a href="faith-formation.html">Faith Formation</a></li>
+
+            <li class="sidebar-dropdown">
+                <button class="sidebar-dropdown-toggle">Ministries <span>▾</span></button>
+                <ul class="sidebar-dropdown-menu">
+                    <li><a href="ministries.html#lectors">Lectors</a></li>
+                    <li><a href="ministries.html#eucharist">Eucharist Ministers</a></li>
+                    <li><a href="ministries.html#altar-servers">Altar Servers</a></li>
+                </ul>
+            </li>
+
+            <li class="sidebar-dropdown">
+                <button class="sidebar-dropdown-toggle">Committees <span>▾</span></button>
+                <ul class="sidebar-dropdown-menu">
+                    <li><a href="committees.html#finance">Finance</a></li>
+                    <li><a href="committees.html#fundraising">Fundraising</a></li>
+                    <li><a href="committees.html#liturgy">Liturgy</a></li>
+                    <li><a href="committees.html#property">Property</a></li>
+                    <li><a href="committees.html#cemetery">Cemetery</a></li>
+                </ul>
+            </li>
+
+            <li class="sidebar-dropdown">
+                <button class="sidebar-dropdown-toggle">Sacraments <span>▾</span></button>
+                <ul class="sidebar-dropdown-menu">
+                    <li><a href="sacraments.html#baptism">Baptism</a></li>
+                    <li><a href="sacraments.html#communion">First Communion</a></li>
+                    <li><a href="sacraments.html#confirmation">Confirmation</a></li>
+                    <li><a href="sacraments.html#marriage">Marriage</a></li>
+                    <li><a href="sacraments.html#anointing">Anointing of the Sick</a></li>
+                </ul>
+            </li>
+
+            <li class="sidebar-dropdown">
+                <button class="sidebar-dropdown-toggle">Organizations <span>▾</span></button>
+                <ul class="sidebar-dropdown-menu">
+                    <li><a href="organizations.html#cwl">Catholic Women's League</a></li>
+                    <li><a href="organizations.html#koc">Knights of Columbus</a></li>
+                    <li><a href="organizations.html#dnp">Development & Peace</a></li>
+                </ul>
+            </li>
+
+            <li class="sidebar-dropdown">
+                <button class="sidebar-dropdown-toggle">Cemeteries <span>▾</span></button>
+                <ul class="sidebar-dropdown-menu">
+                    <li><a href="cemeteries.html#stjoseph">St. Joseph's Cemetery</a></li>
+                    <li><a href="cemeteries.html#chapelhill">Chapel Hill Cemetery</a></li>
+                    <li><a href="cemeteries.html#guidelines">Guidelines</a></li>
+                </ul>
+            </li>
+
+            <li><a href="giving.html">Giving</a></li>
+            <li><a href="closet.html">The Closet</a></li>
+        </ul>
+    </div>
 
     <!-- HERO -->
     <section id="home" class="hero">

@@ -35,19 +35,35 @@ document.getElementById('img-vision').src           = IMAGES.vision;
 document.getElementById('img-foodbank').src         = IMAGES.foodbank;
 
 // =============================================
-// HAMBURGER MENU
+// HAMBURGER + SIDEBAR
 // =============================================
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.getElementById('nav-links');
+const hamburger       = document.getElementById('hamburger');
+const sidebar         = document.getElementById('sidebar');
+const sidebarOverlay  = document.getElementById('sidebar-overlay');
+const sidebarClose    = document.getElementById('sidebar-close');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('open');
-});
+function openSidebar() {
+    sidebar.classList.add('open');
+    sidebarOverlay.classList.add('open');
+    hamburger.classList.add('active');
+}
 
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('open');
+function closeSidebar() {
+    sidebar.classList.remove('open');
+    sidebarOverlay.classList.remove('open');
+    hamburger.classList.remove('active');
+}
+
+hamburger.addEventListener('click', openSidebar);
+sidebarClose.addEventListener('click', closeSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+
+// =============================================
+// SIDEBAR DROPDOWNS
+// =============================================
+document.querySelectorAll('.sidebar-dropdown-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        const parent = toggle.parentElement;
+        parent.classList.toggle('open');
     });
 });
