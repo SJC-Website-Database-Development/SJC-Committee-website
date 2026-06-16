@@ -9,7 +9,6 @@ const IMAGES = {
 // APPLY IMAGES
 // =============================================
 document.getElementById('img-old-church').src   = IMAGES.oldChurch;
-document.getElementById('img-old-interior').src = IMAGES.oldInterior;
 
 // =============================================
 // HAMBURGER + SIDEBAR

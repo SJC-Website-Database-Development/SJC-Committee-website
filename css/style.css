@@ -873,3 +873,14 @@ footer {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+.history-photo {
+    max-width: 500px;
+    margin: 2rem auto 0;
+    text-align: center;
+}
+
+.history-photo img {
+    width: 100%;
+    border: 3px solid var(--gold);
+}
