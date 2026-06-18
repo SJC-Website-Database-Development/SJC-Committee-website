@@ -2,11 +2,11 @@
 // IMAGE PATHS
 // =============================================
 const IMAGES = {
-    cwlBanner:    'images/cwl-banner.png',
-    cwlChristmas: 'images/cwl-christmas.png',
-    cwlSneakers:  'images/cwl-sneakers.png',
-    cwlGroup:     'images/cwl-group.png',
-    cwlEmblem:    'images/cwl-emblem.png',
+    cwlBanner:    'images/CWL_Banner.png',
+    cwlChristmas: 'images/CWL_Christmas.png',
+    cwlSneakers:  'images/CWL_Sneakers.png',
+    cwlGroup:     'images/CWL_Website.png',
+    cwlEmblem:    'images/CWL_Emblem.png',
 };
 
 document.getElementById('img-cwl-banner').src    = IMAGES.cwlBanner;
