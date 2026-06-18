@@ -1542,3 +1542,130 @@ footer {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+/* =====================
+   CEMETERIES PAGE
+===================== */
+.cemetery-mission {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cemetery-mission p {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+    font-style: italic;
+}
+
+.cemetery-info p {
+    color: var(--warm-white);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    max-width: 800px;
+}
+
+.section:not(.section-dark) .cemetery-info p {
+    color: var(--text-dark);
+}
+
+.cemetery-contact-box {
+    background-color: rgba(255,255,255,0.08);
+    border-left: 4px solid var(--gold);
+    padding: 1.5rem;
+    margin-top: 2rem;
+    max-width: 600px;
+}
+
+.cemetery-contact-box h3 {
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.cemetery-contact-box p {
+    color: var(--warm-white);
+    margin-bottom: 0.5rem;
+}
+
+.cemetery-contact-box-light {
+    background-color: var(--cream);
+    border-left: 4px solid var(--burgundy);
+}
+
+.cemetery-contact-box-light h3 {
+    color: var(--burgundy);
+}
+
+.cemetery-contact-box-light p {
+    color: var(--text-dark);
+}
+
+.cemetery-contact-details {
+    margin-top: 0.75rem;
+}
+
+.cemetery-contact-details a {
+    color: var(--gold);
+}
+
+.cemetery-contact-box-light .cemetery-contact-details a {
+    color: var(--burgundy);
+}
+
+.guidelines-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.guideline-card {
+    background-color: rgba(255,255,255,0.05);
+    border-top: 3px solid var(--gold);
+    padding: 1.5rem;
+}
+
+.guideline-card h3 {
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.guideline-list {
+    list-style: none;
+    padding: 0;
+}
+
+.guideline-list li {
+    color: var(--warm-white);
+    padding: 0.4rem 0;
+    padding-left: 1.25rem;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+}
+
+.guideline-list li:last-child {
+    border-bottom: none;
+}
+
+.guideline-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+}
+
+@media (min-width: 768px) {
+    .guidelines-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .guidelines-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
