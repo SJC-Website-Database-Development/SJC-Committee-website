@@ -1710,3 +1710,18 @@ footer {
     font-size: 1rem;
 }
 
+/* =====================
+   CHOIR SECTION
+===================== */
+#choir .cwl-intro-text p {
+    color: var(--warm-white);
+}
+
+#choir .cwl-intro-text h2 {
+    color: var(--gold);
+}
+
+#choir .cwl-intro-image img {
+    width: 100%;
+    border: 3px solid var(--gold);
+}
