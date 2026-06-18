@@ -13,7 +13,7 @@ document.getElementById('img-cwl-banner').src    = IMAGES.cwlBanner;
 document.getElementById('img-cwl-christmas').src  = IMAGES.cwlChristmas;
 document.getElementById('img-cwl-sneakers').src   = IMAGES.cwlSneakers;
 document.getElementById('img-cwl-group').src      = IMAGES.cwlGroup;
-document.getElementById('img-cwl-emblem').src     = IMAGES.cwlEmblem;
+//document.getElementById('img-cwl-emblem').src     = IMAGES.cwlEmblem;
 
 // =============================================
 // HAMBURGER + SIDEBAR
