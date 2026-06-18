@@ -1235,3 +1235,55 @@ footer {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+/* =====================
+   KOC SECTION
+===================== */
+.koc-council {
+    margin: 3rem 0;
+    padding: 2rem;
+    border-left: 4px solid var(--gold);
+    background-color: var(--cream);
+}
+
+.koc-council h3 {
+    color: var(--burgundy);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.koc-council p {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.koc-info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.koc-info-card {
+    background-color: var(--white);
+    border-top: 4px solid var(--gold);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.koc-info-card h3 {
+    color: var(--burgundy);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.koc-info-card p {
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+    .koc-info-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

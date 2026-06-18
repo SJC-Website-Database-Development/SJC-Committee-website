@@ -1,23 +1,17 @@
-// =============================================
-// IMAGE PATHS
-// =============================================
 const IMAGES = {
     cwlBanner:    'images/CWL_Banner.png',
     cwlChristmas: 'images/CWL_Christmas.png',
     cwlSneakers:  'images/CWL_Sneakers.png',
     cwlGroup:     'images/CWL_Website.png',
-    cwlEmblem:    'images/CWL_Emblem.png',
+    kocLogo:      'images/koc-logo.png',
 };
 
 document.getElementById('img-cwl-banner').src    = IMAGES.cwlBanner;
 document.getElementById('img-cwl-christmas').src  = IMAGES.cwlChristmas;
 document.getElementById('img-cwl-sneakers').src   = IMAGES.cwlSneakers;
 document.getElementById('img-cwl-group').src      = IMAGES.cwlGroup;
-//document.getElementById('img-cwl-emblem').src     = IMAGES.cwlEmblem;
+document.getElementById('img-koc-logo').src       = IMAGES.kocLogo;
 
-// =============================================
-// HAMBURGER + SIDEBAR
-// =============================================
 const hamburger      = document.getElementById('hamburger');
 const sidebar        = document.getElementById('sidebar');
 const sidebarOverlay = document.getElementById('sidebar-overlay');
