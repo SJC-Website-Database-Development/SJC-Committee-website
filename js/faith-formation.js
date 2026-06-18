@@ -1,3 +1,9 @@
+const IMAGES = {
+    nancy: 'images/nancy.png',
+};
+
+document.getElementById('img-nancy-ff').src = IMAGES.nancy;
+
 const hamburger      = document.getElementById('hamburger');
 const sidebar        = document.getElementById('sidebar');
 const sidebarOverlay = document.getElementById('sidebar-overlay');
