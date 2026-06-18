@@ -1428,3 +1428,117 @@ footer {
 .ministry-join-dark p {
     color: var(--warm-white) !important;
 }
+
+/* =====================
+   FAITH FORMATION PAGE
+===================== */
+.ff-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.ff-intro p {
+    margin-bottom: 1.25rem;
+    color: var(--text-dark);
+}
+
+.ff-program-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.ff-program-card {
+    background-color: rgba(255,255,255,0.08);
+    border-left: 4px solid var(--gold);
+    padding: 1.5rem;
+}
+
+.ff-program-card h3 {
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.ff-program-card p {
+    color: var(--warm-white);
+    line-height: 1.7;
+}
+
+.ff-registration {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ff-reg-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.ff-reg-item {
+    border-top: 3px solid var(--gold);
+    padding-top: 1.25rem;
+}
+
+.ff-reg-item h3 {
+    color: var(--burgundy);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.ff-reg-item p {
+    color: var(--text-dark);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+}
+
+.ff-contact {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ff-contact-card {
+    background-color: rgba(255,255,255,0.08);
+    border: 2px solid var(--gold);
+    padding: 2rem;
+}
+
+.ff-contact-card h3 {
+    color: var(--gold);
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.ff-contact-role {
+    color: var(--cream);
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+}
+
+.ff-contact-details p {
+    color: var(--warm-white);
+    margin-bottom: 0.5rem;
+}
+
+.ff-contact-details a {
+    color: var(--gold);
+}
+
+.ff-contact-details a:hover {
+    color: var(--gold-light);
+}
+
+@media (min-width: 768px) {
+    .ff-program-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .ff-reg-info {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
