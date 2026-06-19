@@ -2033,3 +2033,13 @@ footer {
 .media-schedule-item-light p {
     color: var(--text-dark) !important;
 }
+
+/* =====================
+   ABOUT BUTTON GROUP
+===================== */
+.about-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
