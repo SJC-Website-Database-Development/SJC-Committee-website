@@ -2020,3 +2020,16 @@ footer {
 .media-placeholder-dark p {
     color: var(--cream) !important;
 }
+
+.media-schedule-item-light {
+    background-color: var(--cream);
+    border: 2px solid var(--burgundy);
+}
+
+.media-schedule-item-light h3 {
+    color: var(--burgundy);
+}
+
+.media-schedule-item-light p {
+    color: var(--text-dark) !important;
+}
