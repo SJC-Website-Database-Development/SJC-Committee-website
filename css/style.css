@@ -1948,3 +1948,75 @@ footer {
 .committee-join-dark p {
     color: var(--warm-white) !important;
 }
+
+/* =====================
+   MEDIA PAGE
+===================== */
+.media-card {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.media-card p {
+    color: var(--warm-white);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.media-card-light p {
+    color: var(--text-dark);
+}
+
+.media-schedule {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 400px;
+    margin: 0 auto 2rem;
+}
+
+.media-schedule-item {
+    background-color: rgba(255,255,255,0.08);
+    border: 2px solid var(--gold);
+    padding: 1.25rem;
+}
+
+.media-schedule-item h3 {
+    color: var(--gold);
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.media-schedule-item p {
+    color: var(--warm-white);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.media-btn-group {
+    margin-top: 1.5rem;
+}
+
+.media-placeholder {
+    background-color: var(--cream);
+    border: 2px dashed var(--gold);
+    padding: 3rem 2rem;
+    margin-top: 1.5rem;
+}
+
+.media-placeholder p {
+    color: var(--text-mid) !important;
+    font-style: italic;
+    margin: 0;
+}
+
+.media-placeholder-dark {
+    background-color: rgba(255,255,255,0.05);
+    border: 2px dashed var(--gold);
+}
+
+.media-placeholder-dark p {
+    color: var(--cream) !important;
+}
