@@ -2056,3 +2056,30 @@ footer {
     object-fit: cover;
     z-index: 0;
 }
+
+/* =====================
+   CLOSET GALLERY
+===================== */
+.closet-gallery-track-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.closet-gallery-track {
+    display: flex;
+    gap: 1rem;
+    animation: scroll-gallery 20s linear infinite;
+}
+
+.closet-gallery-img {
+    height: 250px;
+    width: auto;
+    object-fit: cover;
+    border: 3px solid var(--gold);
+    flex-shrink: 0;
+}
+
+@keyframes scroll-gallery {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}

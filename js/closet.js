@@ -1,11 +1,24 @@
 // =============================================
-// IMAGE PATHS
+// GALLERY PHOTOS — add filenames here
 // =============================================
-const IMAGES = {
-    closet: 'images/closet.png',
-};
+const GALLERY_IMAGES = [
+    // 'images/closet-1.jpg',
+    // 'images/closet-2.jpg',
+    // Add more as you get photos
+];
 
-document.getElementById('img-closet').src = IMAGES.closet;
+const track = document.getElementById('closet-gallery-track');
+if (GALLERY_IMAGES.length > 0) {
+    GALLERY_IMAGES.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = "St. Joseph's Closet";
+        img.className = 'closet-gallery-img';
+        track.appendChild(img);
+    });
+} else {
+    track.innerHTML = '<p style="color:var(--cream); text-align:center; padding: 2rem;">Photos coming soon.</p>';
+}
 
 // =============================================
 // HAMBURGER + SIDEBAR
