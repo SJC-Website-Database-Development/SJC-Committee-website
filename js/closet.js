@@ -1,15 +1,28 @@
 // =============================================
-// GALLERY PHOTOS — add filenames here
+// GALLERY PHOTOS
 // =============================================
 const GALLERY_IMAGES = [
-    // 'images/closet-1.jpg',
-    // 'images/closet-2.jpg',
-    // Add more as you get photos
+    'images/SJC_Closet_Photos/20250822_170435471_iOS.jpg',
+    'images/SJC_Closet_Photos/20250822_170527241_iOS.jpg',
+    'images/SJC_Closet_Photos/20260622_122327461_iOS.jpg',
+    'images/SJC_Closet_Photos/20260622_122339124_iOS.jpg',
+    'images/SJC_Closet_Photos/20260622_122346731_iOS.jpg',
+    'images/SJC_Closet_Photos/20260622_122400729_iOS.jpg',
+    'images/SJC_Closet_Photos/20260622_122406013_iOS.jpg',
+    'images/SJC_Closet_Photos/20260622_122413700_iOS.jpg',
+    'images/SJC_Closet_Photos/20260622_122421423_iOS.jpg',
+    'images/SJC_Closet_Photos/20260622_122459800_iOS.jpg',
+    'images/SJC_Closet_Photos/20260622_122510088_iOS.jpg',
+    'images/SJC_Closet_Photos/20260622_122521525_iOS.jpg',
+    'images/SJC_Closet_Photos/20260622_122529977_iOS.jpg',
+    'images/SJC_Closet_Photos/20260622_122610340_iOS.jpg',
+    'images/SJC_Closet_Photos/20260622_122617342_iOS.jpg',
 ];
 
 const track = document.getElementById('closet-gallery-track');
 if (GALLERY_IMAGES.length > 0) {
-    GALLERY_IMAGES.forEach(src => {
+    const allImages = [...GALLERY_IMAGES, ...GALLERY_IMAGES];
+    allImages.forEach(src => {
         const img = document.createElement('img');
         img.src = src;
         img.alt = "St. Joseph's Closet";
