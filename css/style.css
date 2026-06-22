@@ -342,7 +342,7 @@ a:hover {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(10, 26, 42, 0.6);
+    background-color: rgba(10, 26, 42, 0.171);
 }
 
 .hero-content {
