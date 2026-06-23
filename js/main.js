@@ -19,7 +19,7 @@ document.getElementById('img-announcement').src = IMAGES.announcement;
 // =============================================
 const heroVideo = document.querySelector('.hero-video');
 if (heroVideo) {
-    heroVideo.playbackRate = 0.75;
+    heroVideo.playbackRate = 0.50;
     heroVideo.loop = false;
 
     heroVideo.addEventListener('ended', () => {
