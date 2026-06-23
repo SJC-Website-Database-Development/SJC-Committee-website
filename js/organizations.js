@@ -7,13 +7,22 @@ const IMAGES = {
     cwlSneakers:  'images/CWL_Sneakers.png',
     cwlGroup:     'images/CWL_Website.png',
     kocLogo:      'images/koc-logo.png',
+    kocDonation:  'images/koc-donation.jpg',
+    kocCoats:     'images/koc-coats.jpg',
+    kocMcgivney:  'images/koc-mcgivney.jpg',
 };
 
-document.getElementById('img-cwl-banner').src   = IMAGES.cwlBanner;
+// =============================================
+// APPLY IMAGES
+// =============================================
+document.getElementById('img-cwl-banner').src    = IMAGES.cwlBanner;
 document.getElementById('img-cwl-christmas').src = IMAGES.cwlChristmas;
 document.getElementById('img-cwl-sneakers').src  = IMAGES.cwlSneakers;
 document.getElementById('img-cwl-group').src     = IMAGES.cwlGroup;
 document.getElementById('img-koc-logo').src      = IMAGES.kocLogo;
+document.getElementById('img-koc-donation').src  = IMAGES.kocDonation;
+document.getElementById('img-koc-coats').src     = IMAGES.kocCoats;
+document.getElementById('img-koc-mcgivney').src  = IMAGES.kocMcgivney;
 
 // =============================================
 // HAMBURGER + SIDEBAR

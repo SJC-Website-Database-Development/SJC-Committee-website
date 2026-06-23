@@ -2103,3 +2103,32 @@ footer {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
+
+/* =============================================
+   KOC — BLESSED MCGIVNEY
+   ============================================= */
+
+.koc-mcgivney-subtitle {
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.koc-prayer {
+    border-left: 3px solid var(--gold);
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.koc-prayer h3 {
+    color: var(--gold);
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.koc-prayer p {
+    color: var(--cream);
+    font-style: italic;
+    line-height: 1.8;
+}
