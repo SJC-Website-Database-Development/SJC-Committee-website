@@ -2212,10 +2212,10 @@ footer {
 }
 
 .gallery-arrow {
-    background: none;
-    border: 2px solid var(--gold);
-    color: var(--gold);
-    font-size: 3rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 2.5rem;
     line-height: 1;
     width: 3.5rem;
     height: 3.5rem;
@@ -2225,12 +2225,15 @@ footer {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    transition: background 0.2s, color 0.2s;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.25), 0 4px 16px rgba(0,0,0,0.2);
+    transition: background 0.2s, box-shadow 0.2s;
 }
 
 .gallery-arrow:hover {
-    background: var(--gold);
-    color: var(--burgundy);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.35), 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .gallery-dots {
