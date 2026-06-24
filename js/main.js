@@ -38,6 +38,8 @@ const GALLERY = [
     { src: 'gallery-photos/inside-the-church.jpg', caption: 'Inside St. Joseph\'s Church' },
     { src: 'gallery-photos/international-potluck-dinner.jpg', caption: 'International Potluck Dinner' },
     { src: 'gallery-photos/live-stream.jpg', caption: 'Live Stream' },
+    { src: 'gallery-photos/christmas-tea.jpg', caption: 'Christmas Tea' },
+    { src: 'gallery-photos/first-communion-board.jpg', caption: 'First Communion Board' },
 ];
 
 if (GALLERY.length > 0) {
