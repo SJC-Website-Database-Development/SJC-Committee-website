@@ -40,7 +40,6 @@
                 <ul class="sidebar-dropdown-menu">
                     <li><a href="index.html#about">Our Parish</a></li>
                     <li><a href="history.html">Parish History</a></li>
-                    
                     <li><a href="staff.html">Staff</a></li>
                 </ul>
             </li>
@@ -60,14 +59,18 @@
                     <li><a href="ministries.html#eucharist">Eucharist Ministry</a></li>
                     <li><a href="ministries.html#lector">Lector Ministry</a></li>
                     <li><a href="ministries.html#hospitality">Hospitality Ministry</a></li>
-                    
                     <li><a href="ministries.html#funeral">Funeral Servers</a></li>
                 </ul>
             </li>
             <li class="sidebar-dropdown">
                 <button class="sidebar-dropdown-toggle">Committees <span>▾</span></button>
                 <ul class="sidebar-dropdown-menu">
-                    <li><a href="committees.html#pastoral-council">Pastoral Council</a></li><li><a href="committees.html#finance">Finance</a></li><li><a href="committees.html#fundraising">Fundraising</a></li><li><a href="committees.html#liturgy">Liturgy</a></li><li><a href="committees.html#property">Property</a></li><li><a href="committees.html#cemetery">Cemetery</a></li>
+                    <li><a href="committees.html#pastoral-council">Pastoral Council</a></li>
+                    <li><a href="committees.html#finance">Finance</a></li>
+                    <li><a href="committees.html#fundraising">Fundraising</a></li>
+                    <li><a href="committees.html#liturgy">Liturgy</a></li>
+                    <li><a href="committees.html#property">Property</a></li>
+                    <li><a href="committees.html#cemetery">Cemetery</a></li>
                 </ul>
             </li>
             <li class="sidebar-dropdown">
@@ -98,8 +101,32 @@
                     <li><a href="cemeteries.html#guidelines">Guidelines</a></li>
                 </ul>
             </li>
-            <li><a href="closet.html">St. Joseph's Closet</a></li><li><a href="giving.html">Giving</a></li>
+            <li><a href="closet.html">St. Joseph's Closet</a></li>
+            <li><a href="giving.html">Giving</a></li>
         </ul>
+    </div>
+
+    <!-- CEMETERY SEARCH MODAL -->
+    <div class="cemetery-modal-overlay" id="cemetery-modal-overlay">
+        <div class="cemetery-modal">
+            <div class="cemetery-modal-header">
+                <h2 id="modal-title">Search Cemetery Records</h2>
+                <button class="cemetery-modal-close" id="cemetery-modal-close" aria-label="Close">✕</button>
+            </div>
+            <div class="cemetery-modal-body">
+                <div class="cemetery-search-bar">
+                    <input
+                        type="text"
+                        id="cemetery-search-input"
+                        placeholder="Search by name or block ID..."
+                        autocomplete="off"
+                        spellcheck="false"
+                    >
+                </div>
+                <div id="search-status" class="search-status"></div>
+                <div id="search-results" class="search-results"></div>
+            </div>
+        </div>
     </div>
 
     <!-- PAGE HEADER -->
@@ -144,12 +171,12 @@
                 </div>
             </div>
             <div class="cemetery-search-btn">
-                <a href="#" class="btn btn-gold cemetery-btn-full">Search St. Joseph's Cemetery Records</a>
+                <button class="btn btn-gold cemetery-btn-full" id="sjc-search-btn">Search St. Joseph's Cemetery Records</button>
             </div>
         </div>
     </section>
 
-<!-- CHAPEL HILL CEMETERY -->
+    <!-- CHAPEL HILL CEMETERY -->
     <section id="chapelhill" class="section">
         <div class="container">
             <h2 class="section-title">Chapel Hill Cemetery</h2>
@@ -174,7 +201,7 @@
                 </div>
             </div>
             <div class="cemetery-search-btn">
-                <a href="#" class="btn btn-outline cemetery-btn-full">Search Chapel Hill Cemetery Records</a>
+                <button class="btn btn-outline cemetery-btn-full" id="chapel-search-btn">Search Chapel Hill Cemetery Records</button>
             </div>
         </div>
     </section>
@@ -267,26 +294,3 @@
     <script src="js/cemeteries.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

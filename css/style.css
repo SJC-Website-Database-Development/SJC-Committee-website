@@ -2255,3 +2255,184 @@ footer {
 .gallery-dot.active {
     background: var(--gold);
 }
+
+/* =============================================
+   CEMETERY SEARCH MODAL
+   ============================================= */
+
+.cemetery-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 2000;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+}
+
+.cemetery-modal-overlay.active {
+  display: flex;
+}
+
+.cemetery-modal {
+  background: #fff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 720px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  overflow: hidden;
+  margin-top: 60px;
+}
+
+.cemetery-modal-header {
+  background: var(--burgundy);
+  color: #fff;
+  padding: 1.4rem 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cemetery-modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.cemetery-modal-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.cemetery-modal-close:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.cemetery-modal-body {
+  padding: 1.8rem;
+}
+
+/* ── Search bar ── */
+.cemetery-search-bar {
+  margin-bottom: 1.2rem;
+}
+
+.cemetery-search-bar input {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  font-size: 1rem;
+  border: 2px solid #d0d5dd;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.cemetery-search-bar input:focus {
+  border-color: var(--burgundy);
+}
+
+/* ── Status messages ── */
+.search-status {
+  margin-bottom: 0.8rem;
+  font-size: 0.92rem;
+}
+
+.search-loading   { color: #666; }
+.search-count     { color: var(--burgundy); font-weight: 600; }
+.search-no-results{ color: #555; }
+.search-error     { color: #c0392b; }
+.search-coming-soon {
+  color: #555;
+  background: #f5f5f0;
+  border-left: 4px solid var(--gold);
+  padding: 0.9rem 1.1rem;
+  border-radius: 4px;
+  margin: 0;
+}
+
+/* ── Result cards ── */
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.search-result-card {
+  border: 1px solid #e2e6ea;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  background: #fafafa;
+  transition: box-shadow 0.15s;
+}
+
+.search-result-card:hover {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.result-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--burgundy);
+  margin-bottom: 0.45rem;
+}
+
+.result-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 0.7rem;
+}
+
+.result-label {
+  font-weight: 600;
+  color: #777;
+  margin-right: 0.25rem;
+}
+
+.btn-map {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  background: var(--gold);
+  color: #1a1a1a;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.btn-map:hover {
+  opacity: 0.85;
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .cemetery-modal {
+    margin-top: 40px;
+  }
+
+  .cemetery-modal-body {
+    padding: 1.2rem;
+  }
+
+  .result-details {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
