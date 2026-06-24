@@ -2188,13 +2188,11 @@ footer {
 }
 
 .gallery-slide {
-    flex: 1;
-    max-width: 700px;
     text-align: center;
 }
 
 .gallery-slide img {
-    max-width: 100%;
+    max-width: min(700px, calc(100vw - 200px));
     max-height: 500px;
     width: auto;
     height: auto;
