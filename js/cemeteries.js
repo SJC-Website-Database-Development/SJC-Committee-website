@@ -3,9 +3,11 @@
    Queries Cloudflare Worker → D1 database
    ============================================================ */
 
-const SJC_WORKER_URL = 'https://sjc-cemetery-worker.st-joe-ph.workers.dev/search';
+const SJC_WORKER_URL    = 'https://sjc-cemetery-worker.st-joe-ph.workers.dev/search';
+const CHAPEL_WORKER_URL = 'https://chaple-hill-worker.st-joe-ph.workers.dev/search';
 
-let searchTimeout = null;
+let searchTimeout  = null;
+let activeWorkerUrl = SJC_WORKER_URL;
 
 const modal        = document.getElementById('cemetery-modal-overlay');
 const modalTitle   = document.getElementById('modal-title');
@@ -17,9 +19,11 @@ const sjcBtn       = document.getElementById('sjc-search-btn');
 const chapelBtn    = document.getElementById('chapel-search-btn');
 
 // ── Open modal ──────────────────────────────────────────────
-function openModal(cemeteryName) {
+function openModal(cemeteryName, workerUrl) {
+  activeWorkerUrl = workerUrl;
   modalTitle.textContent = 'Search ' + cemeteryName + ' Records';
   searchInput.value = '';
+  searchInput.disabled = false;
   searchStatus.innerHTML = '';
   searchResults.innerHTML = '';
   modal.classList.add('active');
@@ -34,18 +38,8 @@ function closeModal() {
 }
 
 // ── Button listeners ─────────────────────────────────────────
-sjcBtn.addEventListener('click', () => openModal("St. Joseph's Cemetery"));
-
-chapelBtn.addEventListener('click', () => {
-  searchStatus.innerHTML = '';
-  searchResults.innerHTML = '';
-  openModal('Chapel Hill Cemetery');
-  searchStatus.innerHTML = '<p class="search-coming-soon">Online records for Chapel Hill Cemetery are coming soon. Please contact the Parish Office for inquiries.</p>';
-  searchInput.disabled = true;
-});
-
-// Re-enable input when modal reopens for SJC
-sjcBtn.addEventListener('click', () => { searchInput.disabled = false; });
+sjcBtn.addEventListener('click', () => openModal("St. Joseph's Cemetery", SJC_WORKER_URL));
+chapelBtn.addEventListener('click', () => openModal("Chapel Hill Cemetery", CHAPEL_WORKER_URL));
 
 // ── Close triggers ────────────────────────────────────────────
 modalClose.addEventListener('click', closeModal);
@@ -72,7 +66,7 @@ searchInput.addEventListener('input', () => {
 // ── Fetch from Worker ─────────────────────────────────────────
 async function doSearch(query) {
   try {
-    const res = await fetch(`${SJC_WORKER_URL}?q=${encodeURIComponent(query)}`);
+    const res = await fetch(`${activeWorkerUrl}?q=${encodeURIComponent(query)}`);
     if (!res.ok) throw new Error('Network error');
     const records = await res.json();
     renderResults(records, query);
@@ -93,12 +87,12 @@ function renderResults(records, query) {
   searchStatus.innerHTML = `<p class="search-count">${records.length} record${records.length !== 1 ? 's' : ''} found</p>`;
 
   searchResults.innerHTML = records.map(r => {
-    const name      = [r.first_name, r.last_name].filter(Boolean).join(' ') || 'Unknown';
-    const dob       = r.date_of_birth || '—';
-    const dod       = r.date_of_death || '—';
-    const blockId   = r.block_id || '—';
-    const hasMap    = r.gps_lat && r.gps_lng;
-    const mapsUrl   = hasMap ? `https://www.google.com/maps?q=${r.gps_lat},${r.gps_lng}` : null;
+    const name    = [r.first_name, r.last_name].filter(Boolean).join(' ') || 'Unknown';
+    const dob     = r.date_of_birth || '—';
+    const dod     = r.date_of_death || '—';
+    const blockId = r.block_id || '—';
+    const hasMap  = r.gps_lat && r.gps_lng;
+    const mapsUrl = hasMap ? `https://www.google.com/maps?q=${r.gps_lat},${r.gps_lng}` : null;
 
     return `
       <div class="search-result-card">
@@ -133,15 +127,15 @@ const sidebarOverlay = document.getElementById('sidebar-overlay');
 const sidebarClose   = document.getElementById('sidebar-close');
 
 function openSidebar() {
-    sidebar.classList.add('open');
-    sidebarOverlay.classList.add('open');
-    hamburger.classList.add('active');
+  sidebar.classList.add('open');
+  sidebarOverlay.classList.add('open');
+  hamburger.classList.add('active');
 }
 
 function closeSidebar() {
-    sidebar.classList.remove('open');
-    sidebarOverlay.classList.remove('open');
-    hamburger.classList.remove('active');
+  sidebar.classList.remove('open');
+  sidebarOverlay.classList.remove('open');
+  hamburger.classList.remove('active');
 }
 
 hamburger.addEventListener('click', openSidebar);
@@ -149,8 +143,8 @@ sidebarClose.addEventListener('click', closeSidebar);
 sidebarOverlay.addEventListener('click', closeSidebar);
 
 document.querySelectorAll('.sidebar-dropdown-toggle').forEach(toggle => {
-    toggle.addEventListener('click', () => {
-        const parent = toggle.parentElement;
-        parent.classList.toggle('open');
-    });
+  toggle.addEventListener('click', () => {
+    const parent = toggle.parentElement;
+    parent.classList.toggle('open');
+  });
 });
