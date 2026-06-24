@@ -31,6 +31,49 @@ if (heroVideo) {
 }
 
 // =============================================
+// GALLERY CAROUSEL
+// =============================================
+const GALLERY = [
+    // Add photos here in this format:
+    // { src: 'gallery-photos/your-photo.jpg', caption: 'Your caption here' },
+];
+
+if (GALLERY.length > 0) {
+    let currentIndex = 0;
+
+    const galleryImg     = document.getElementById('gallery-img');
+    const galleryCaption = document.getElementById('gallery-caption');
+    const galleryPrev    = document.getElementById('gallery-prev');
+    const galleryNext    = document.getElementById('gallery-next');
+    const dotsContainer  = document.getElementById('gallery-dots');
+
+    GALLERY.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'gallery-dot';
+        dot.setAttribute('aria-label', `Go to photo ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+    });
+
+    function goTo(index) {
+        currentIndex = (index + GALLERY.length) % GALLERY.length;
+        galleryImg.src             = GALLERY[currentIndex].src;
+        galleryImg.alt             = GALLERY[currentIndex].caption;
+        galleryCaption.textContent = GALLERY[currentIndex].caption;
+        document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    galleryPrev.addEventListener('click', () => goTo(currentIndex - 1));
+    galleryNext.addEventListener('click', () => goTo(currentIndex + 1));
+
+    goTo(0);
+} else {
+    document.getElementById('gallery').style.display = 'none';
+}
+
+// =============================================
 // HAMBURGER + SIDEBAR
 // =============================================
 const hamburger       = document.getElementById('hamburger');
