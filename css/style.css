@@ -2590,15 +2590,20 @@ footer {
 .announcement-img {
     width: 100%;
     height: auto;
-    border-radius: 4px;
     display: block;
+    border: 2px solid var(--gold);
+    border-radius: 4px;
+    padding: 0.5rem;
+    background: rgba(255,255,255,0.03);
     margin-bottom: 1rem;
+    box-sizing: border-box;
 }
 
 .announcement-pdf {
     width: 100%;
     height: 500px;
-    border: none;
+    border: 2px solid var(--gold);
+    border-radius: 4px;
     display: block;
     margin-bottom: 1rem;
 }
