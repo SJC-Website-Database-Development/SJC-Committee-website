@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>St. Joseph Parish — Admin</title>
     <style>
-        /* ── Help Panel ── */
         #cms-help-panel {
             position: fixed;
             top: 58px;
@@ -50,7 +49,6 @@
             right: 260px;
         }
 
-        /* ── Tips Panel ── */
         #cms-tips-panel {
             position: fixed;
             top: 58px;
@@ -95,7 +93,6 @@
             right: 260px;
         }
 
-        /* ── Shared styles ── */
         #cms-help-panel h2,
         #cms-tips-panel h2 {
             color: #c9a227;
@@ -127,34 +124,44 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             margin: 1rem 0;
         }
+
+        #cms-last-updated {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: #1a3a5c;
+            color: #e8e0d0;
+            font-family: Georgia, serif;
+            font-size: 0.75rem;
+            padding: 0.5rem 0.85rem;
+            border-radius: 4px;
+            z-index: 10000;
+            opacity: 0.85;
+            border: 1px solid rgba(201,162,39,0.3);
+        }
+
+        #cms-last-updated span {
+            color: #c9a227;
+        }
     </style>
 </head>
 <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
-    <!-- Help Guide Toggle -->
     <button id="cms-help-toggle" onclick="
-        const panel = document.getElementById('cms-help-panel');
-        const tips = document.getElementById('cms-tips-panel');
-        const tipsBtn = document.getElementById('cms-tips-toggle');
-        panel.classList.toggle('visible');
+        document.getElementById('cms-help-panel').classList.toggle('visible');
         this.classList.toggle('open');
-        tips.classList.remove('visible');
-        tipsBtn.classList.remove('open');
+        document.getElementById('cms-tips-panel').classList.remove('visible');
+        document.getElementById('cms-tips-toggle').classList.remove('open');
     ">Help Guide</button>
 
-    <!-- Tips Toggle -->
     <button id="cms-tips-toggle" onclick="
-        const panel = document.getElementById('cms-tips-panel');
-        const help = document.getElementById('cms-help-panel');
-        const helpBtn = document.getElementById('cms-help-toggle');
-        panel.classList.toggle('visible');
+        document.getElementById('cms-tips-panel').classList.toggle('visible');
         this.classList.toggle('open');
-        help.classList.remove('visible');
-        helpBtn.classList.remove('open');
+        document.getElementById('cms-help-panel').classList.remove('visible');
+        document.getElementById('cms-help-toggle').classList.remove('open');
     ">Tips & Help</button>
 
-    <!-- Help Guide Panel -->
     <div id="cms-help-panel">
         <h2>📋 Admin Help Guide</h2>
 
@@ -181,7 +188,6 @@
         <p style="font-size:0.8rem; opacity:0.6; margin-top:1rem;">For technical support contact Tobin.</p>
     </div>
 
-    <!-- Tips & Troubleshooting Panel -->
     <div id="cms-tips-panel">
         <h2>💡 Tips & Troubleshooting</h2>
 
@@ -207,5 +213,28 @@
 
         <p style="font-size:0.8rem; opacity:0.6; margin-top:1rem;">For technical support contact Tobin.</p>
     </div>
+
+    <div id="cms-last-updated">Last updated: <span id="cms-update-time">Loading...</span></div>
+
+    <script>
+        async function getLastUpdated() {
+            try {
+                var res = await fetch('https://api.github.com/repos/SJC-Website-Database-Development/SJC-Committee-website/commits/main');
+                var data = await res.json();
+                var date = new Date(data.commit.committer.date);
+                var formatted = date.toLocaleDateString('en-CA', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                document.getElementById('cms-update-time').textContent = formatted;
+            } catch (err) {
+                document.getElementById('cms-update-time').textContent = 'Unavailable';
+            }
+        }
+        getLastUpdated();
+    </script>
 </body>
 </html>

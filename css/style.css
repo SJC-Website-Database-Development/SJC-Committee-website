@@ -2679,3 +2679,22 @@ footer {
     writing-mode: vertical-rl;
     letter-spacing: 0.05em;
 }
+
+#cms-last-updated {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: #1a3a5c;
+    color: #e8e0d0;
+    font-family: Georgia, serif;
+    font-size: 0.75rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: 4px;
+    z-index: 10000;
+    opacity: 0.85;
+    border: 1px solid rgba(201,162,39,0.3);
+}
+
+#cms-last-updated span {
+    color: #c9a227;
+}
