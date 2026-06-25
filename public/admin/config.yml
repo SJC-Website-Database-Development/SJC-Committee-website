@@ -1,0 +1,44 @@
+backend:
+  name: github
+  repo: tobinchisholm-svg/SJC-Committee-website
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "bulletins"
+    label: "Bulletins"
+    folder: "public/bulletins"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "date" }
+      - { label: "Bulletin PDF", name: "file", widget: "file" }
+
+  - name: "announcements"
+    label: "Announcements"
+    folder: "public/announcements"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "date" }
+      - { label: "Text", name: "body", widget: "markdown", required: false }
+      - { label: "Image or PDF", name: "attachment", widget: "file", required: false }
+
+  - name: "calendar"
+    label: "Calendar Events"
+    folder: "public/events"
+    create: true
+    fields:
+      - { label: "Event Name", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "date" }
+      - { label: "Details", name: "body", widget: "markdown", required: false }
+
+  - name: "gallery"
+    label: "Parish Gallery"
+    folder: "public/gallery"
+    create: true
+    fields:
+      - { label: "Caption", name: "title", widget: "string" }
+      - { label: "Photo", name: "image", widget: "image" }
