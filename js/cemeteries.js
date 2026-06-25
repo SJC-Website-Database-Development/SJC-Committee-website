@@ -3,8 +3,8 @@
    Queries Cloudflare Worker → D1 database
    ============================================================ */
 
-const SJC_WORKER_URL    = 'https://sjc-cemetery-worker.st-joe-ph.workers.dev/search';
-const CHAPEL_WORKER_URL = 'https://chaple-hill-worker.st-joe-ph.workers.dev/search';
+const SJC_WORKER_URL    = 'https://cemetery-api.stjoeph.net/search';
+const CHAPEL_WORKER_URL = 'https://chapelhill-api.stjoeph.net/search';
 
 let searchTimeout  = null;
 let activeWorkerUrl = SJC_WORKER_URL;
