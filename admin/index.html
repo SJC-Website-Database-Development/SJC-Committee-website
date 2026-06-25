@@ -7,19 +7,46 @@
     <style>
         #cms-help-panel {
             position: fixed;
-            bottom: 0;
-            right: 0;
-            width: 280px;
-            max-height: 100vh;
+            top: 58px;
+            right: -260px;
+            width: 260px;
+            max-height: calc(100vh - 58px);
             overflow-y: auto;
             background: #1a3a5c;
             color: #e8e0d0;
             padding: 1.5rem;
             font-family: Georgia, serif;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             line-height: 1.6;
             z-index: 9999;
             box-shadow: -2px 0 12px rgba(0,0,0,0.3);
+            transition: right 0.3s ease;
+        }
+
+        #cms-help-panel.visible {
+            right: 0;
+        }
+
+        #cms-help-toggle {
+            position: fixed;
+            top: 120px;
+            right: 0;
+            background: #1a3a5c;
+            color: #c9a227;
+            border: none;
+            padding: 0.6rem 0.5rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-family: Georgia, serif;
+            z-index: 10000;
+            border-radius: 4px 0 0 4px;
+            writing-mode: vertical-rl;
+            letter-spacing: 0.05em;
+            transition: right 0.3s ease;
+        }
+
+        #cms-help-toggle.open {
+            right: 260px;
         }
 
         #cms-help-panel h2 {
@@ -54,7 +81,10 @@
 <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
-    <button id="cms-help-toggle" onclick="document.getElementById('cms-help-panel').classList.toggle('visible')">Help Guide</button>
+    <button id="cms-help-toggle" onclick="
+        document.getElementById('cms-help-panel').classList.toggle('visible');
+        this.classList.toggle('open');
+    ">Help Guide</button>
 
     <div id="cms-help-panel">
         <h2>📋 Admin Help Guide</h2>
