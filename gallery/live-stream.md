@@ -1,4 +1,4 @@
 ---
-title: Live Stream
-image: /uploads/live-stream.jpg
+title: First Communion Board
+image: /uploads/first-communion-board.jpg
 ---
