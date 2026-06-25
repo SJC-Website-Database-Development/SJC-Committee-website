@@ -93,52 +93,96 @@ async function loadAnnouncements() {
     }
 }
 
-loadAnnouncements();
-
 // =============================================
-// GALLERY CAROUSEL
+// GALLERY CAROUSEL — load from CMS
 // =============================================
-const GALLERY = [
-    { src: 'gallery-photos/inside-church-2.jpg', caption: 'Inside St. Joseph\'s Church' },
-    { src: 'gallery-photos/inside-the-church.jpg', caption: 'Inside St. Joseph\'s Church' },
-    { src: 'gallery-photos/international-potluck-dinner.jpg', caption: 'International Potluck Dinner' },
-    { src: 'gallery-photos/live-stream.jpg', caption: 'Live Stream' },
-];
+async function loadGallery() {
+    const gallerySection = document.getElementById('gallery');
 
-if (GALLERY.length > 0) {
-    let currentIndex = 0;
+    try {
+        const res = await fetch('https://api.github.com/repos/SJC-Website-Database-Development/SJC-Committee-website/contents/gallery');
+        if (!res.ok) {
+            if (gallerySection) gallerySection.style.display = 'none';
+            return;
+        }
 
-    const galleryImg     = document.getElementById('gallery-img');
-    const galleryCaption = document.getElementById('gallery-caption');
-    const galleryPrev    = document.getElementById('gallery-prev');
-    const galleryNext    = document.getElementById('gallery-next');
-    const dotsContainer  = document.getElementById('gallery-dots');
+        const files = await res.json();
+        const mdFiles = files
+            .filter(f => f.name.endsWith('.md'))
+            .sort((a, b) => a.name.localeCompare(b.name));
 
-    GALLERY.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'gallery-dot';
-        dot.setAttribute('aria-label', `Go to photo ${i + 1}`);
-        dot.addEventListener('click', () => goTo(i));
-        dotsContainer.appendChild(dot);
-    });
+        if (mdFiles.length === 0) {
+            if (gallerySection) gallerySection.style.display = 'none';
+            return;
+        }
 
-    function goTo(index) {
-        currentIndex = (index + GALLERY.length) % GALLERY.length;
-        galleryImg.src             = GALLERY[currentIndex].src;
-        galleryImg.alt             = GALLERY[currentIndex].caption;
-        galleryCaption.textContent = GALLERY[currentIndex].caption;
-        document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentIndex);
+        const baseUrl = 'https://raw.githubusercontent.com/SJC-Website-Database-Development/SJC-Committee-website/main';
+
+        const galleryPromises = mdFiles.map(async f => {
+            const r    = await fetch(f.download_url);
+            const text = await r.text();
+
+            const titleMatch = text.match(/title:\s*"?(.+?)"?\s*$/m);
+            const imageMatch = text.match(/image:\s*(.+)/);
+
+            if (!imageMatch) return null;
+
+            return {
+                caption: titleMatch ? titleMatch[1].trim() : '',
+                src:     baseUrl + imageMatch[1].trim()
+            };
         });
+
+        const results  = await Promise.all(galleryPromises);
+        const GALLERY  = results.filter(Boolean);
+
+        if (GALLERY.length === 0) {
+            if (gallerySection) gallerySection.style.display = 'none';
+            return;
+        }
+
+        let currentIndex = 0;
+
+        const galleryImg     = document.getElementById('gallery-img');
+        const galleryCaption = document.getElementById('gallery-caption');
+        const galleryPrev    = document.getElementById('gallery-prev');
+        const galleryNext    = document.getElementById('gallery-next');
+        const dotsContainer  = document.getElementById('gallery-dots');
+
+        dotsContainer.innerHTML = '';
+        GALLERY.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'gallery-dot';
+            dot.setAttribute('aria-label', `Go to photo ${i + 1}`);
+            dot.addEventListener('click', () => goTo(i));
+            dotsContainer.appendChild(dot);
+        });
+
+        function goTo(index) {
+            currentIndex = (index + GALLERY.length) % GALLERY.length;
+            galleryImg.src             = GALLERY[currentIndex].src;
+            galleryImg.alt             = GALLERY[currentIndex].caption;
+            galleryCaption.textContent = GALLERY[currentIndex].caption;
+            document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        galleryPrev.addEventListener('click', () => goTo(currentIndex - 1));
+        galleryNext.addEventListener('click', () => goTo(currentIndex + 1));
+
+        goTo(0);
+
+    } catch (err) {
+        if (gallerySection) gallerySection.style.display = 'none';
     }
-
-    galleryPrev.addEventListener('click', () => goTo(currentIndex - 1));
-    galleryNext.addEventListener('click', () => goTo(currentIndex + 1));
-
-    goTo(0);
-} else {
-    document.getElementById('gallery').style.display = 'none';
 }
+
+// =============================================
+// INIT
+// =============================================
+loadAnnouncements();
+loadGallery();
 
 // =============================================
 // HAMBURGER + SIDEBAR
