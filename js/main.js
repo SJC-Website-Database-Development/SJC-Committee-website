@@ -4,15 +4,13 @@
 const IMAGES = {
     pastor:       'images/pastor.png',
     deacon:       'images/deacon.png',
-    announcement: 'images/announcement1.png',
 };
 
 // =============================================
 // APPLY IMAGES
 // =============================================
-document.getElementById('img-pastor').src       = IMAGES.pastor;
-document.getElementById('img-deacon').src       = IMAGES.deacon;
-document.getElementById('img-announcement').src = IMAGES.announcement;
+document.getElementById('img-pastor').src = IMAGES.pastor;
+document.getElementById('img-deacon').src = IMAGES.deacon;
 
 // =============================================
 // HERO VIDEO - SLOW DOWN AND PAUSE AT END
@@ -31,6 +29,73 @@ if (heroVideo) {
 }
 
 // =============================================
+// ANNOUNCEMENTS — load latest from repo
+// =============================================
+async function loadAnnouncements() {
+    const container = document.getElementById('announcements-container');
+
+    try {
+        const res = await fetch('https://api.github.com/repos/SJC-Website-Database-Development/SJC-Committee-website/contents/announcements');
+        if (!res.ok) {
+            container.innerHTML = '<p class="announcement-placeholder">No announcements at this time. Check back soon.</p>';
+            return;
+        }
+
+        const files = await res.json();
+        const mdFiles = files
+            .filter(f => f.name.endsWith('.md'))
+            .sort((a, b) => b.name.localeCompare(a.name));
+
+        if (mdFiles.length === 0) {
+            container.innerHTML = '<p class="announcement-placeholder">No announcements at this time. Check back soon.</p>';
+            return;
+        }
+
+        const baseUrl = 'https://raw.githubusercontent.com/SJC-Website-Database-Development/SJC-Committee-website/main';
+
+        const announcementPromises = mdFiles.map(async f => {
+            const r    = await fetch(f.download_url);
+            const text = await r.text();
+
+            const titleMatch      = text.match(/title:\s*"?(.+?)"?\s*$/m);
+            const attachmentMatch = text.match(/attachment:\s*(.+)/);
+            const bodyMatch       = text.match(/---[\s\S]*?---\s*([\s\S]*)/);
+
+            const title      = titleMatch      ? titleMatch[1].trim()      : 'Announcement';
+            const attachment = attachmentMatch ? attachmentMatch[1].trim() : null;
+            const body       = bodyMatch       ? bodyMatch[1].trim()       : '';
+
+            let html = `<div class="announcement-card">`;
+            html += `<h3 class="announcement-title">${title}</h3>`;
+
+            if (attachment) {
+                const ext = attachment.split('.').pop().toLowerCase();
+                if (ext === 'pdf') {
+                    html += `<iframe src="${baseUrl}${attachment}" class="announcement-pdf" title="${title}"></iframe>`;
+                } else {
+                    html += `<img src="${baseUrl}${attachment}" class="announcement-img" alt="${title}">`;
+                }
+            }
+
+            if (body) {
+                html += `<p class="announcement-body">${body}</p>`;
+            }
+
+            html += `</div>`;
+            return html;
+        });
+
+        const cards = await Promise.all(announcementPromises);
+        container.innerHTML = cards.join('');
+
+    } catch (err) {
+        container.innerHTML = '<p class="announcement-placeholder">Could not load announcements. Please check back later.</p>';
+    }
+}
+
+loadAnnouncements();
+
+// =============================================
 // GALLERY CAROUSEL
 // =============================================
 const GALLERY = [
@@ -38,8 +103,6 @@ const GALLERY = [
     { src: 'gallery-photos/inside-the-church.jpg', caption: 'Inside St. Joseph\'s Church' },
     { src: 'gallery-photos/international-potluck-dinner.jpg', caption: 'International Potluck Dinner' },
     { src: 'gallery-photos/live-stream.jpg', caption: 'Live Stream' },
-    { src: 'gallery-photos/christmas-tea.jpg', caption: 'Christmas Tea' },
-    { src: 'gallery-photos/first-communion-board.jpg', caption: 'First Communion Board' },
 ];
 
 if (GALLERY.length > 0) {
