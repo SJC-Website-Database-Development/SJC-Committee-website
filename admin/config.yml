@@ -5,13 +5,13 @@ backend:
   base_url: https://stjoeph.net
   auth_endpoint: api/auth
 
-media_folder: "public/uploads"
+media_folder: "uploads"
 public_folder: "/uploads"
 
 collections:
   - name: "bulletins"
     label: "Bulletins"
-    folder: "public/bulletins"
+    folder: "bulletins"
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
@@ -20,7 +20,7 @@ collections:
 
   - name: "announcements"
     label: "Announcements"
-    folder: "public/announcements"
+    folder: "announcements"
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
@@ -30,7 +30,7 @@ collections:
 
   - name: "calendar"
     label: "Calendar Events"
-    folder: "public/events"
+    folder: "events"
     create: true
     fields:
       - { label: "Event Name", name: "title", widget: "string" }
@@ -39,7 +39,7 @@ collections:
 
   - name: "gallery"
     label: "Parish Gallery"
-    folder: "public/gallery"
+    folder: "gallery"
     create: true
     fields:
       - { label: "Caption", name: "title", widget: "string" }
