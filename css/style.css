@@ -567,27 +567,6 @@ blockquote cite {
     font-size: 1.2rem;
 }
 
-/* =====================
-   ANNOUNCEMENTS
-===================== */
-.announcements-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-}
-
-.announcement-card {
-    border-left: 4px solid var(--burgundy);
-    padding-left: 1.25rem;
-}
-
-.announcement-card img {
-    width: 100%;
-    max-height: 300px;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    border: 3px solid var(--gold);
-}
 
 /* =====================
    DONATE
