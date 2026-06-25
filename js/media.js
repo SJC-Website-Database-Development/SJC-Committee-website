@@ -237,3 +237,18 @@ document.querySelectorAll('.sidebar-dropdown-toggle').forEach(toggle => {
         parent.classList.toggle('open');
     });
 });
+
+// =============================================
+// ANCHOR SCROLL — wait for content to load
+// =============================================
+window.addEventListener('load', () => {
+    const hash = window.location.hash;
+    if (hash) {
+        setTimeout(() => {
+            const target = document.querySelector(hash);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 500);
+    }
+});
