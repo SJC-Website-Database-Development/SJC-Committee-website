@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: tobinchisholm-svg/SJC-Committee-website
+  repo: SJC-Website-Database-Development/SJC-Committee-website
   branch: main
   base_url: https://stjoeph.net
   auth_endpoint: api/auth
