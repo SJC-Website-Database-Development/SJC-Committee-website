@@ -4,8 +4,80 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>St. Joseph Parish — Admin</title>
+    <style>
+        #cms-help-panel {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 280px;
+            max-height: 100vh;
+            overflow-y: auto;
+            background: #1a3a5c;
+            color: #e8e0d0;
+            padding: 1.5rem;
+            font-family: Georgia, serif;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            z-index: 9999;
+            box-shadow: -2px 0 12px rgba(0,0,0,0.3);
+        }
+
+        #cms-help-panel h2 {
+            color: #c9a227;
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(201,162,39,0.4);
+        }
+
+        #cms-help-panel h3 {
+            color: #c9a227;
+            font-size: 0.85rem;
+            margin: 1.1rem 0 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        #cms-help-panel p {
+            margin: 0 0 0.75rem;
+            color: #e8e0d0;
+            opacity: 0.9;
+        }
+
+        #cms-help-panel .help-divider {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin: 1rem 0;
+        }
+    </style>
 </head>
 <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+    <div id="cms-help-panel">
+        <h2>📋 Admin Help Guide</h2>
+
+        <h3>Bulletins</h3>
+        <p>Upload the new weekly bulletin. Add a title (e.g. "June 22, 2026 Bulletin"), upload the two bulletin images, and click Publish. The old bulletin will be automatically removed. Only the most recent bulletin shows on the website.</p>
+
+        <hr class="help-divider">
+
+        <h3>Announcements</h3>
+        <p>Add any parish announcements here. You can include a title, text, and an image or PDF. Click Publish and it will appear on the homepage immediately.</p>
+
+        <hr class="help-divider">
+
+        <h3>Calendar Events</h3>
+        <p>Add events to the parish calendar. Fill in the event name, date and time, and any details. Click Publish and it will appear as a dot on the calendar on the website. Visitors can click the date to see the event details.</p>
+
+        <hr class="help-divider">
+
+        <h3>Parish Gallery</h3>
+        <p>Upload photos to the homepage photo gallery. Add a caption and upload the photo. Click Publish and it will appear in the gallery carousel on the homepage.</p>
+
+        <hr class="help-divider">
+
+        <p style="font-size:0.8rem; opacity:0.6; margin-top:1rem;">For technical support contact Tobin.</p>
+    </div>
 </body>
 </html>
