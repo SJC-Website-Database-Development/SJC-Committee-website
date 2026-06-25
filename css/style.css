@@ -2598,6 +2598,8 @@ footer {
     border: 1px solid var(--gold);
     border-radius: 6px;
     padding: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .announcement-title {
@@ -2612,7 +2614,6 @@ footer {
     border-radius: 4px;
     display: block;
     margin-bottom: 1rem;
-    object-fit: contain;
 }
 
 .announcement-pdf {
