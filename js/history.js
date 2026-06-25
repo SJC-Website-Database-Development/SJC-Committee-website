@@ -2,7 +2,7 @@
 // IMAGE PATHS
 // =============================================
 const IMAGES = {
-    oldChurch:         'images/old-church.png',
+    oldChurch:         'images/old-church.jpg',
     oldChurchInterior: 'images/old-church-interior.jpg',
     stTeresas:         'images/st-teresas-school.jpg',
 };
