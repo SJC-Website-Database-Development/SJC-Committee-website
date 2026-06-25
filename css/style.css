@@ -2639,3 +2639,43 @@ footer {
 #livestream {
     scroll-margin-top: 80px;
 }
+
+#cms-help-panel {
+    position: fixed;
+    top: 58px;
+    right: 0;
+    width: 260px;
+    max-height: calc(100vh - 58px);
+    overflow-y: auto;
+    background: #1a3a5c;
+    color: #e8e0d0;
+    padding: 1.5rem;
+    font-family: Georgia, serif;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    z-index: 9999;
+    box-shadow: -2px 0 12px rgba(0,0,0,0.3);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+#cms-help-panel.visible {
+    transform: translateX(0);
+}
+
+#cms-help-toggle {
+    position: fixed;
+    top: 65px;
+    right: 0;
+    background: #1a3a5c;
+    color: #c9a227;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: Georgia, serif;
+    z-index: 10000;
+    border-radius: 4px 0 0 4px;
+    writing-mode: vertical-rl;
+    letter-spacing: 0.05em;
+}
