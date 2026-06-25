@@ -130,8 +130,15 @@
             <h2 class="section-title light">Calendar of Events</h2>
             <div class="media-card">
                 <p>Our parish calendar includes Mass times, sacramental celebrations, committee meetings, faith formation classes, and special events throughout the year.</p>
-                <div class="media-placeholder media-placeholder-dark">
-                    <p>Calendar coming soon — check back regularly for updates.</p>
+                <div class="calendar-nav">
+                    <button class="calendar-nav-btn" id="cal-prev">&#8249;</button>
+                    <h3 class="calendar-month-title" id="cal-month-title"></h3>
+                    <button class="calendar-nav-btn" id="cal-next">&#8250;</button>
+                </div>
+                <div class="calendar-grid" id="calendar-grid"></div>
+                <div class="calendar-event-detail" id="calendar-event-detail" style="display:none;">
+                    <button class="calendar-detail-close" id="calendar-detail-close">✕</button>
+                    <div id="calendar-event-content"></div>
                 </div>
             </div>
         </div>

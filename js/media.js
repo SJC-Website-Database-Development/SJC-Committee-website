@@ -6,11 +6,9 @@ async function loadLatestBulletin() {
 
     try {
         const res = await fetch('https://api.github.com/repos/SJC-Website-Database-Development/SJC-Committee-website/contents/bulletins');
-        
         if (!res.ok) throw new Error('Could not load bulletins');
-        
         const files = await res.json();
-        
+
         const mdFiles = files
             .filter(f => f.name.endsWith('.md'))
             .sort((a, b) => b.name.localeCompare(a.name));
@@ -64,7 +62,147 @@ async function loadLatestBulletin() {
     }
 }
 
+// =============================================
+// CALENDAR
+// =============================================
+let calendarEvents = [];
+let currentYear;
+let currentMonth;
+
+async function loadCalendarEvents() {
+    try {
+        const res = await fetch('https://api.github.com/repos/SJC-Website-Database-Development/SJC-Committee-website/contents/events');
+        if (!res.ok) return;
+        const files = await res.json();
+
+        const mdFiles = files.filter(f => f.name.endsWith('.md'));
+
+        const eventPromises = mdFiles.map(async f => {
+            const r    = await fetch(f.download_url);
+            const text = await r.text();
+
+            const titleMatch  = text.match(/title:\s*"?(.+?)"?\s*$/m);
+            const dateMatch   = text.match(/date:\s*(.+)/);
+            const bodyMatch   = text.match(/---[\s\S]*?---\s*([\s\S]*)/);
+
+            if (!titleMatch || !dateMatch) return null;
+
+            return {
+                title: titleMatch[1].trim(),
+                date:  new Date(dateMatch[1].trim()),
+                body:  bodyMatch ? bodyMatch[1].trim() : ''
+            };
+        });
+
+        const results = await Promise.all(eventPromises);
+        calendarEvents = results.filter(Boolean);
+        renderCalendar();
+
+    } catch (err) {
+        console.error('Calendar load error:', err);
+    }
+}
+
+function renderCalendar() {
+    const title    = document.getElementById('cal-month-title');
+    const grid     = document.getElementById('calendar-grid');
+
+    const monthNames = ['January','February','March','April','May','June',
+                        'July','August','September','October','November','December'];
+
+    title.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+    const firstDay  = new Date(currentYear, currentMonth, 1).getDay();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    const dayHeaders = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    let html = dayHeaders.map(d => `<div class="cal-header">${d}</div>`).join('');
+
+    // Empty cells before first day
+    for (let i = 0; i < firstDay; i++) {
+        html += `<div class="cal-cell cal-empty"></div>`;
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+        const dayEvents = calendarEvents.filter(e =>
+            e.date.getFullYear() === currentYear &&
+            e.date.getMonth()    === currentMonth &&
+            e.date.getDate()     === d
+        );
+
+        const hasEvents = dayEvents.length > 0;
+        const today     = new Date();
+        const isToday   = today.getFullYear() === currentYear &&
+                          today.getMonth()    === currentMonth &&
+                          today.getDate()     === d;
+
+        const eventDots = hasEvents
+            ? `<div class="cal-dots">${dayEvents.map(() => '<span class="cal-dot"></span>').join('')}</div>`
+            : '';
+
+        const dataAttr = hasEvents
+            ? `data-events='${JSON.stringify(dayEvents.map(e => ({ title: e.title, body: e.body, date: e.date.toISOString() })))}'`
+            : '';
+
+        html += `<div class="cal-cell ${hasEvents ? 'cal-has-events' : ''} ${isToday ? 'cal-today' : ''}" ${dataAttr}>
+            <span class="cal-day-num">${d}</span>
+            ${eventDots}
+        </div>`;
+    }
+
+    grid.innerHTML = html;
+
+    // Click handlers
+    grid.querySelectorAll('.cal-has-events').forEach(cell => {
+        cell.addEventListener('click', () => {
+            const events  = JSON.parse(cell.dataset.events);
+            const detail  = document.getElementById('calendar-event-detail');
+            const content = document.getElementById('calendar-event-content');
+
+            content.innerHTML = events.map(e => {
+                const dateObj = new Date(e.date);
+                const timeStr = dateObj.toLocaleTimeString('en-CA', { hour: '2-digit', minute: '2-digit' });
+                return `
+                    <div class="cal-event-item">
+                        <p class="cal-event-time">${timeStr}</p>
+                        <h4 class="cal-event-title">${e.title}</h4>
+                        ${e.body ? `<p class="cal-event-body">${e.body}</p>` : ''}
+                    </div>
+                `;
+            }).join('');
+
+            detail.style.display = 'block';
+        });
+    });
+}
+
+document.getElementById('cal-prev').addEventListener('click', () => {
+    currentMonth--;
+    if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+    renderCalendar();
+    document.getElementById('calendar-event-detail').style.display = 'none';
+});
+
+document.getElementById('cal-next').addEventListener('click', () => {
+    currentMonth++;
+    if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+    renderCalendar();
+    document.getElementById('calendar-event-detail').style.display = 'none';
+});
+
+document.getElementById('calendar-detail-close').addEventListener('click', () => {
+    document.getElementById('calendar-event-detail').style.display = 'none';
+});
+
+// =============================================
+// INIT
+// =============================================
+const now    = new Date();
+currentYear  = now.getFullYear();
+currentMonth = now.getMonth();
+
 loadLatestBulletin();
+loadCalendarEvents();
 
 // =============================================
 // HAMBURGER + SIDEBAR

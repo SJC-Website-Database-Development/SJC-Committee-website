@@ -2436,3 +2436,145 @@ footer {
     gap: 0.25rem;
   }
 }
+
+/* =============================================
+   MEDIA — CALENDAR
+   ============================================= */
+
+.calendar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.calendar-nav-btn {
+    background: none;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    font-size: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.calendar-nav-btn:hover {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+.calendar-month-title {
+    color: var(--cream);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.cal-header {
+    text-align: center;
+    color: var(--gold);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0;
+    text-transform: uppercase;
+}
+
+.cal-cell {
+    min-height: 60px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    padding: 0.4rem;
+    position: relative;
+    cursor: default;
+}
+
+.cal-empty {
+    background: transparent;
+}
+
+.cal-today {
+    border: 2px solid var(--gold);
+}
+
+.cal-has-events {
+    background: rgba(201, 162, 39, 0.15);
+    cursor: pointer;
+}
+
+.cal-has-events:hover {
+    background: rgba(201, 162, 39, 0.25);
+}
+
+.cal-day-num {
+    color: var(--cream);
+    font-size: 0.85rem;
+}
+
+.cal-dots {
+    display: flex;
+    gap: 3px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+}
+
+.cal-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: inline-block;
+}
+
+.calendar-event-detail {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.calendar-detail-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    color: var(--cream);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.cal-event-item {
+    margin-bottom: 1rem;
+}
+
+.cal-event-time {
+    color: var(--gold);
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+}
+
+.cal-event-title {
+    color: var(--cream);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.cal-event-body {
+    color: var(--cream);
+    opacity: 0.85;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
