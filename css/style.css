@@ -2067,7 +2067,9 @@ footer {
 .closet-gallery-track {
     display: flex;
     gap: 1rem;
-    animation: scroll-gallery 20s linear infinite;
+    width: max-content;
+    animation: scroll-gallery 80s linear infinite;
+    will-change: transform;
 }
 
 .closet-gallery-img {
