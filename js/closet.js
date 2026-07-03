@@ -4,8 +4,6 @@
 const GALLERY_IMAGES = [
     'images/SJC_Closet_Photos/20250822_170435471_iOS.jpg',
     'images/SJC_Closet_Photos/20250822_170527241_iOS.jpg',
-    'images/SJC_Closet_Photos/20260622_122327461_iOS.jpg',
-    'images/SJC_Closet_Photos/20260622_122339124_iOS.jpg',
     'images/SJC_Closet_Photos/20260622_122346731_iOS.jpg',
     'images/SJC_Closet_Photos/20260622_122400729_iOS.jpg',
     'images/SJC_Closet_Photos/20260622_122406013_iOS.jpg',
