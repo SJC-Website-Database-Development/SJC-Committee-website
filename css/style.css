@@ -2727,3 +2727,21 @@ footer {
 #cms-last-updated span {
     color: #c9a227;
 }
+
+/* =============================================
+   FOOTER — CREDIT
+   ============================================= */
+
+.footer-credit {
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.footer-credit a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+.footer-credit a:hover {
+    text-decoration: underline;
+}
