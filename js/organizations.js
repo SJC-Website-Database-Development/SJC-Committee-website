@@ -11,6 +11,7 @@ const IMAGES = {
     kocCoats:       'images/koc-coats.jpg',
     kocMcgivney:    'images/koc-mcgivney.jpg',
     kocScholarship: 'images/koc-scholarship.jpg',
+    kocRose:        'images/koc-rose.jpg',
 };
 
 // =============================================
@@ -25,6 +26,7 @@ document.getElementById('img-koc-donation').src    = IMAGES.kocDonation;
 document.getElementById('img-koc-coats').src       = IMAGES.kocCoats;
 document.getElementById('img-koc-mcgivney').src    = IMAGES.kocMcgivney;
 document.getElementById('img-koc-scholarship').src = IMAGES.kocScholarship;
+document.getElementById('img-koc-rose').src        = IMAGES.kocRose;
 
 // =============================================
 // HAMBURGER + SIDEBAR
