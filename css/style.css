@@ -339,11 +339,7 @@ a:hover {
     padding: 6rem 1.25rem 3rem;
 }
 
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background-color: rgba(10, 26, 42, 0.171);
-}
+
 
 .hero-content {
     position: relative;
