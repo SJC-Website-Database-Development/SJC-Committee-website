@@ -423,6 +423,27 @@ blockquote cite {
     color: var(--warm-white);
 }
 
+/* =============================================
+   STAFF — ROLE LABEL
+   ============================================= */
+
+.staff-bio .staff-role {
+    color: var(--gold);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* =============================================
+   STAFF — CAROLENA PHOTO CROP
+   ============================================= */
+
+#img-carolena {
+    object-fit: cover;
+    object-position: center 20%;
+    height: 400px;
+}
+
 /* =====================
    CARDS GRID
 ===================== */
