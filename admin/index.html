@@ -127,7 +127,7 @@
 
         #cms-last-updated {
             position: fixed;
-            bottom: 1rem;
+            bottom: 4rem;
             right: 1rem;
             background: #1a3a5c;
             color: #e8e0d0;
@@ -142,6 +142,49 @@
 
         #cms-last-updated span {
             color: #c9a227;
+        }
+
+        #cms-sync-panel {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            background: #1a3a5c;
+            border: 1px solid rgba(201,162,39,0.3);
+            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            z-index: 10000;
+            font-family: Georgia, serif;
+            font-size: 0.8rem;
+            color: #e8e0d0;
+        }
+
+        #cms-sync-panel p {
+            margin: 0 0 0.5rem;
+            color: #c9a227;
+        }
+
+        .sync-btn {
+            background: #c9a227;
+            border: none;
+            color: #1a3a5c;
+            padding: 0.3rem 0.75rem;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-right: 0.5rem;
+            font-size: 0.75rem;
+            font-family: Georgia, serif;
+            font-weight: bold;
+        }
+
+        .sync-btn:hover {
+            background: #e8b830;
+        }
+
+        #sync-status {
+            margin: 0.5rem 0 0;
+            font-size: 0.75rem;
+            opacity: 0.7;
+            min-height: 1rem;
         }
     </style>
 </head>
@@ -211,10 +254,22 @@
 
         <hr class="help-divider">
 
+        <h3>Cemetery Database Sync</h3>
+        <p>The cemetery database automatically updates once per day. If you need it updated immediately after adding a new burial record, use the Sync buttons in the bottom left corner.</p>
+
+        <hr class="help-divider">
+
         <p style="font-size:0.8rem; opacity:0.6; margin-top:1rem;">For technical support contact Tobin.</p>
     </div>
 
     <div id="cms-last-updated">Last updated: <span id="cms-update-time">Loading...</span></div>
+
+    <div id="cms-sync-panel">
+        <p>Cemetery Database Sync</p>
+        <button class="sync-btn" onclick="triggerSync('sjc')">Sync SJC</button>
+        <button class="sync-btn" onclick="triggerSync('chapel')">Sync Chapel Hill</button>
+        <p id="sync-status"></p>
+    </div>
 
     <script>
         async function getLastUpdated() {
@@ -235,6 +290,29 @@
             }
         }
         getLastUpdated();
+
+        async function triggerSync(cemetery) {
+            var status = document.getElementById('sync-status');
+            var urls = {
+                sjc: 'https://cemetery-api.stjoeph.net/sync',
+                chapel: 'https://chapelhill-api.stjoeph.net/sync'
+            };
+            status.textContent = 'Syncing...';
+            try {
+                var res = await fetch(urls[cemetery], {
+                    method: 'POST',
+                    headers: { 'Authorization': 'Bearer SJCcemetery2026!xK9mP3qR7vN' }
+                });
+                var data = await res.json();
+                if (data.success) {
+                    status.textContent = 'Done! ' + data.synced + ' records synced.';
+                } else {
+                    status.textContent = 'Sync failed: ' + (data.error || 'Unknown error');
+                }
+            } catch (err) {
+                status.textContent = 'Error: ' + err.message;
+            }
+        }
     </script>
 </body>
 </html>
