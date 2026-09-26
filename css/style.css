@@ -367,6 +367,41 @@ a:hover {
     margin-bottom: 2rem;
 }
 
+/* =============================================
+   HERO — TEXT SHADOW ENHANCEMENT
+   ============================================= */
+
+.hero-title {
+    text-shadow: 
+        0 2px 4px rgba(0,0,0,0.9),
+        0 4px 12px rgba(0,0,0,0.7),
+        0 8px 24px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    text-shadow: 
+        0 2px 4px rgba(0,0,0,0.9),
+        0 4px 12px rgba(0,0,0,0.7);
+}
+
+.hero-eyebrow {
+    text-shadow: 
+        0 2px 4px rgba(0,0,0,0.9),
+        0 4px 12px rgba(0,0,0,0.7);
+}
+
+.hero-sub {
+    text-shadow: 
+        0 2px 4px rgba(0,0,0,0.9),
+        0 4px 12px rgba(0,0,0,0.7);
+}
+
+.hero-location {
+    text-shadow: 
+        0 2px 4px rgba(0,0,0,0.9),
+        0 4px 12px rgba(0,0,0,0.7);
+}
+
 /* =====================
    ABOUT
 ===================== */
@@ -2761,4 +2796,68 @@ footer {
 
 .footer-credit a:hover {
     text-decoration: underline;
+}
+
+/* =============================================
+   SITEMAP
+   ============================================= */
+
+.sitemap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2.5rem;
+    margin-top: 1rem;
+}
+
+.sitemap-heading {
+    color: var(--navy);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+}
+
+.sitemap-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sitemap-list li {
+    margin-bottom: 0.5rem;
+}
+
+.sitemap-list a {
+    color: var(--text-mid);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.sitemap-list a:hover {
+    color: var(--gold);
+}
+
+.footer-sitemap a {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.footer-sitemap a:hover {
+    text-decoration: underline;
+}
+
+/* =============================================
+   SACRAMENTS — ANCHOR SCROLL OFFSET
+   ============================================= */
+
+#baptism,
+#confirmation,
+#eucharist,
+#reconciliation,
+#anointing,
+#holy-orders,
+#matrimony {
+    scroll-margin-top: 80px;
 }
